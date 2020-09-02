@@ -1,0 +1,10 @@
+- name: "{{ caddy_domain }} is registered with Caddy"
+  template:
+    src: caddyfile.j2
+    dest: /etc/caddy/{{ caddy_domain }}.caddy
+    owner: root
+    group: root
+    mode: 0644
+  notify:
+    - Caddy config was reloaded
+  tags: [ caddy ]
